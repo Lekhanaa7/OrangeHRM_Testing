@@ -1,34 +1,45 @@
 package orangehrm.tests;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import orangehrm.commonutils.CommonUtils;
 import orangehrm.pageobject.EmployeePage;
+import orangehrm.pageobject.LoginPage;
 
 public class AddEmployeeTest {
 	private WebDriver driver;
 	private EmployeePage employeePage;
+	private LoginPage loginPage;
 
-	@BeforeClass
-	public void setUp() {
-		System.setProperty("webdriver.edge.driver",
-				"C:\\Users\\Lekhana\\Downloads\\edgedriver_win64\\msedgedriver.exe");
-		driver = new EdgeDriver();
-		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee");
+	@BeforeMethod
+	public void setUp() throws IOException {
+		driver = CommonUtils.createDriver(LoginPage.loadProperties());
+
+		loginPage = new LoginPage(driver);
 		employeePage = new EmployeePage(driver);
+		loginPage.browserSetup(driver);
+		employeePage.browserSetup(driver);
+
 	}
 
 	@Test
-	public void testAddNewEmployee() {
-		employeePage.addNewEmployee("John", "Middle", "Doe");
+	public void testAddNewEmployee() throws InterruptedException {
+		loginPage.doLogin("Admin", "admin123");
 
+		loginPage.clickPimButton();
+		Thread.sleep(2000);
+
+		employeePage.addNewEmployee("aksh", "mak", "kan");
 	}
 
-	@AfterClass
+	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.closeBrowser();
 	}
 }
