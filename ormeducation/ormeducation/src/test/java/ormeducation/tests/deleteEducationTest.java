@@ -9,7 +9,7 @@ public class deleteEducationTest extends BaseTest {
 
 		loginPage.clickAdminButton();
 		Thread.sleep(2000);
-		adminPage.deleteEducation("EFGH");
+		adminPage.deleteEducation("ABCD");
 	}
 
 }

@@ -9,6 +9,6 @@ public class editEducationTest extends BaseTest {
 
 		loginPage.clickAdminButton();
 		Thread.sleep(2000);
-		adminPage.editEducation("1234", "EFGH");
+		adminPage.editEducation("ABCD", "EFGH");
 	}
 }

@@ -37,19 +37,19 @@ public class LoginPage {
 
 	}
 
-	@FindBy(how = How.CSS, using = "[name='username']")
+	@FindBy(how = How.XPATH, using = "(//input[@data-v-1f99f73c=''])")
 
 	private WebElement usernameElement;
 
-	@FindBy(how = How.CSS, using = "[name='password']")
+	@FindBy(how = How.XPATH, using = "(//input[@data-v-1f99f73c=''])[2]")
 
 	private WebElement passwordElement;
 
-	@FindBy(how = How.XPATH, using = "//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")
+	@FindBy(how = How.XPATH, using = "//button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")
 
 	private WebElement loginButton;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[1]/a")
+	@FindBy(how = How.XPATH, using = "//a[@class='oxd-main-menu-item' and @href='/web/index.php/admin/viewAdminModule']")
 
 	private WebElement adminButton;
 

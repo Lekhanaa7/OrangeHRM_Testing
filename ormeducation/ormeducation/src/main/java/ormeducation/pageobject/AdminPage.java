@@ -41,25 +41,21 @@ public class AdminPage {
 	@FindBy(how = How.XPATH, using = "//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	private WebElement addBtn;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(how = How.XPATH, using = "(//input[@data-v-1f99f73c=''])[2]")
 	private WebElement txtEducation;
-
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button[2]")
+	@FindBy(how = How.XPATH, using = "(//button[@data-v-10d463b7=''])[2]")
 	private WebElement saveBtn;
 
-	//	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/span")
-	//	private WebElement alreadyExistsBtn;
-
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(how = How.XPATH, using = "(//input[@class='oxd-input oxd-input--active' and @data-v-1f99f73c=''])[2]")
 	private WebElement txtEdit;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button[2]")
+	@FindBy(how = How.XPATH, using = "//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")
 	private WebElement editedSavedBtn;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/button")
+	@FindBy(how = How.XPATH, using = "//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-horizontal-margin']")
 	private WebElement deleteSelectBtn;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[3]/div/div/div/div[3]/button[2]")
+	@FindBy(how = How.XPATH, using = "//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']")
 	private WebElement yesBtn;
 
 	public void addNewEducation(String education) throws InterruptedException {
@@ -90,7 +86,7 @@ public class AdminPage {
 			String msg = alreadyExistsBtn.getText();
 			if (msg.equals("Already exists")) {
 				String newValue = RandomStringUtils.randomAlphabetic(4);
-				commonUtils.waitForElement(driver, txtEducation, 5);
+				commonUtils.waitForElement(driver, txtEducation, 2);
 				txtEducation.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
 				txtEducation.sendKeys(newValue);
 				Thread.sleep(2000);
